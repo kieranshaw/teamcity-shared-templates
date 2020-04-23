@@ -52,4 +52,10 @@ object MavenBuild : Template({
     artifactRules = "target/*.jar"
     buildNumberPattern = "1.%build.counter%.0"
 
+    steps {
+        maven {
+            goals = "versions:set versions:commit -DnewVersion=%system.build.number%"
+        }
+    }
+
 })
