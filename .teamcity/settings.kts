@@ -46,7 +46,7 @@ project {
 }
 
 object MavenBuild : Template({
-    id = "MavenBuild"
+    id("MavenBuild")
     name = "MavenBuild"
 
     artifactRules = "target/*.jar"
