@@ -28,7 +28,7 @@ version = "2019.2"
 project {
     description = "Contains all other projects"
 
-    template(Build)
+    template(MavenBuild)
 
     features {
         buildReportTab {
@@ -45,8 +45,11 @@ project {
     }
 }
 
-object Build : Template({
-    name = "Build"
+object MavenBuild : Template({
+    id = "MavenBuild"
+    name = "MavenBuild"
 
     artifactRules = "target/*.jar"
+    buildNumberPattern = "1.%build.counter%.0"
+
 })
