@@ -82,4 +82,12 @@ object DeployBuild : Template({
         }
     }
 
+    features {
+        vcsLabeling {
+            vcsRootId = "__ALL__"
+            labelingPattern = "deploy/%deploy.environment.name%/%system.build.number%"
+            branchFilter = ""
+        }
+    }
+
 })
