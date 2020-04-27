@@ -80,15 +80,10 @@ object DeployBuild : Template({
 
     steps {
         script {
-            scriptContent = "dir"
-        }
-    }
-
-    features {
-        vcsLabeling {
-            vcsRootId = "__ALL__"
-            labelingPattern = "deploy/%deploy.environment.name%/%system.build.number%"
-            branchFilter = ""
+            scriptContent = """
+                echo "Deploying %system.build.number% to env %deploy.environment.name%"
+                dir
+                """.trimMargin()
         }
     }
 
