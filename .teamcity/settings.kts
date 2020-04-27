@@ -1,5 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.vcsLabeling
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.buildReportTab
 
 /*
@@ -56,6 +58,24 @@ object MavenBuild : Template({
     steps {
         maven {
             goals = "versions:set versions:commit -DnewVersion=%system.build.number%"
+        }
+    }
+
+})
+
+object DeployBuild : Template({
+    name = "DeployBuild"
+
+    type = Type.DEPLOYMENT
+
+    vcs {
+        root(DslContext.settingsRoot)
+        branchFilter = "+:<default>"
+    }
+
+    steps {
+        script {
+            scriptContent = "dir"
         }
     }
 
