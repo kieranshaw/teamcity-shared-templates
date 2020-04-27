@@ -32,6 +32,7 @@ project {
     description = "Contains all other projects"
 
     template(MavenBuild)
+    template(DeployBuild)
 
     features {
         buildReportTab {
