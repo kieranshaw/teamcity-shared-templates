@@ -12,5 +12,25 @@ in the root project, and delete the patch script.
 create(DslContext.projectId, Project({
     id("PetClinic")
     name = "PetClinic"
+
+    features {
+        feature {
+            id = "PROJECT_EXT_5"
+            type = "project-graphs"
+            param("series", """
+                [
+                  {
+                    "type": "valueType",
+                    "title": "Success Rate",
+                    "sourceBuildTypeId": "PetClinic_ReleaseTrain_DeployPreProd",
+                    "key": "SuccessRate"
+                  }
+                ]
+            """.trimIndent())
+            param("format", "text")
+            param("title", "New chart title")
+            param("seriesTitle", "Serie")
+        }
+    }
 }))
 
