@@ -73,11 +73,6 @@ object DeployBuild : Template({
         text("deploy.environment.name", "", display = ParameterDisplay.HIDDEN, allowEmpty = false)
     }
 
-    vcs {
-        root(DslContext.settingsRoot)
-        branchFilter = "+:<default>"
-    }
-
     steps {
         script {
             scriptContent = """
