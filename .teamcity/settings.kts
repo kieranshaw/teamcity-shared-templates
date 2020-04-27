@@ -69,6 +69,10 @@ object DeployBuild : Template({
 
     type = Type.DEPLOYMENT
 
+    params {
+        text("deploy.environment.name", "", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+    }
+
     vcs {
         root(DslContext.settingsRoot)
         branchFilter = "+:<default>"
@@ -77,6 +81,14 @@ object DeployBuild : Template({
     steps {
         script {
             scriptContent = "dir"
+        }
+    }
+
+    features {
+        vcsLabeling {
+            vcsRootId = "__ALL__"
+            labelingPattern = "deploy/%deploy.environment.name%/%system.build.number%"
+            branchFilter = ""
         }
     }
 
